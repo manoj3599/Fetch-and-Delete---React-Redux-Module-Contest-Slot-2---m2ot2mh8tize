@@ -1,21 +1,20 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "./_app";
 
-function DataItem({ data, deleteRow }) {
-  const { } = useContext(AuthContext);
+function DataItem({ id, busName, ticketPrice, source, destination, onDelete }) {
+  const { msg } = useContext(AuthContext);
 
   const handleDelete = () => {
-    // Call the deleteRow function with the id of the current data item
-    deleteRow(data.id);
+    onDelete(id);
   };
 
   return (
     <div className="data">
-      <div>ID: {data.id}</div>
-      <div>Bus Name: {data.busName}</div>
-      <div>Ticket Price: {data.ticketPrice}</div>
-      <div>From: {data.source}</div>
-      <div>To: {data.destination}</div>
+      <div>ID: {id}</div>
+      <div>Bus Name: {busName}</div>
+      <div>Ticket Price: {ticketPrice}</div>
+      <div>From: {source}</div>
+      <div>To: {destination}</div>
       <button onClick={handleDelete}>Delete</button>
     </div>
   );
