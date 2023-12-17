@@ -1,21 +1,15 @@
-import { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "./_app";
+import DataItem from "./DataItem";
 
-import DataItem from "./dataItem";
-function Dashboard() {
-  const { data, setData, msg, setMsg } = useContext(AuthContext);
+export default function Dashboard() {
+  const { data, deleteRow } = useContext(AuthContext);
 
   return (
-    <div id="dashboardPage">
-      <div id="message">msg</div>
-
-
-      <DataItem />
-
-
-
-
+    <div id="dashboard">
+      {data.map((item) => (
+        <DataItem key={item.id} data={item} deleteRow={deleteRow} />
+      ))}
     </div>
   );
 }
-export default Dashboard;
